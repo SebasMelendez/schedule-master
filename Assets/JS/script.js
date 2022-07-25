@@ -119,7 +119,6 @@ function loadContents(){
         console.log("data loaded!")
         i = 0
         $(".description").each(function(){
-            console.log($(this))
             $(this).val(data[i])
             i++
         })
@@ -157,8 +156,13 @@ function audit(){
 
 
 createGrid()
-loadContents()
 audit()
+loadContents()
+
+setInterval(function() {
+    audit()
+    console.log("tasks audited")
+}, 1800000);
 
 $(".saveBtn").on("click", function() {
     

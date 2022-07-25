@@ -5,7 +5,7 @@
 This website will help you organize your day by keeping tabs on all work hours of your day!
 Press the save button to have your data persist!
 
-![Product Name Screen Shot](./assets/fullpageScreenshot.jpeg)
+![Product Name Screen Shot](./Assets/fullpageScreenshot.jpeg)
 
 * [Project Website](https://github.com/SebasMelendez/schedule-master)
 * [Project Repo](https://sebasmelendez.github.io/schedule-master/)

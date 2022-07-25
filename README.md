@@ -7,8 +7,8 @@ Press the save button to have your data persist!
 
 ![Product Name Screen Shot](./Assets/fullpageScreenshot.jpeg)
 
-* [Project Website](https://github.com/SebasMelendez/schedule-master)
-* [Project Repo](https://sebasmelendez.github.io/schedule-master/)
+* [Project Website](https://sebasmelendez.github.io/schedule-master/)
+* [Project Repo](https://github.com/SebasMelendez/schedule-master)
 
 
 ### Built With

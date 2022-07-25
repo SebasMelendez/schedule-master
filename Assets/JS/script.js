@@ -1,22 +1,12 @@
-const data = {
-     9:"",
-    10:"",
-    11:"",
-    12:"",
-    13:"",
-    14:"",
-    15:"",
-    16:"",
-    17:"",
-    18:"",
-    19:"",
-    20:"",
-    21:""
-}
+let data = []
+
+
+limit = 18
 
 let containerEL = $(".container")
 let index
 
+//convert raw indexes into readable timeframes
 function translator(index){
     switch(index){
     case 9:
@@ -82,10 +72,11 @@ function translator(index){
 
 }
 
+//dynamicallyu create the timegrid
 function createGrid(){
     let index = 9;
     
-    while(index<22){
+    while(index<limit){
         // debu:"",er;
         let rowId = "#" + index
         let textId= "#text-" + index
@@ -105,16 +96,43 @@ function createGrid(){
 
 }
 
-function saveContents(){
+//save data
+function saveContents(time, contents){
+    
+    time = time.replace("#","")
+
+    i = time - 9
+   data[i] = contents
+
+    localStorage.setItem("data",JSON.stringify(data))
 
 }
+//load data
+function loadContents(){
+    data = JSON.parse(localStorage.getItem("data"))
+    if(!data){
+        console.log("no Data")
+        data = []
 
+    }
+    else{
+        console.log("data loaded!")
+        i = 0
+        $(".description").each(function(){
+            console.log($(this))
+            $(this).val(data[i])
+            i++
+        })
+    }
+   
+}
+
+//audit timesheet to reflect visual cues
 function audit(){
     indexHour =  moment().hour()
 
     $(".time-block").each(function(){
         let sheetHour = parseInt($(this).attr("id").replace('#',''))
-        console.log(sheetHour,indexHour)
         
         if(sheetHour < indexHour){
             $(this).addClass("past")
@@ -135,5 +153,18 @@ function audit(){
 }
 
 
+
+
+
 createGrid()
+loadContents()
 audit()
+
+$(".saveBtn").on("click", function() {
+    
+    indexToSave = $(this).parent().attr("id")
+    textToSave =$(this).siblings(".description").val()
+    
+    saveContents(indexToSave, textToSave)
+})
+
